@@ -1,11 +1,10 @@
 "use client";
 
-import Link from "next/link";
 import type { ReactNode } from "react";
 import Icon from "./Icon";
 import { useLang } from "@/lib/i18n";
 import { SITE, whatsappLink } from "@/lib/site";
-import { cta, ui, waMessages, type L } from "@/lib/content";
+import { ui, waMessages, type L } from "@/lib/content";
 
 /* ----------------------------- layout helpers ----------------------------- */
 
@@ -33,7 +32,6 @@ const sizes = {
   sm: "min-h-11 px-4 py-2.5 text-sm",
   md: "min-h-12 px-6 py-3 text-[0.95rem]",
   lg: "min-h-[3.25rem] px-7 py-3.5 text-base",
-  pair: "min-h-[3.25rem] px-3 py-3 text-[0.95rem] sm:px-6",
 };
 
 export function btn(variant: Variant, size: keyof typeof sizes = "md") {
@@ -149,38 +147,3 @@ export function PageBanner({ title, text }: { title: L; text: L }) {
   );
 }
 
-/* --------------------------------- CTA band -------------------------------- */
-
-export function CtaBand() {
-  const { t } = useLang();
-  return (
-    <section className="bg-gold-100">
-      <Container className="py-12 sm:py-16">
-        <div className="flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-center">
-          <div className="max-w-xl">
-            <h2 className="text-3xl text-forest-900 sm:text-4xl">{t(cta.title)}</h2>
-            <p className="mt-3 text-base text-forest-900/75 sm:text-lg">{t(cta.text)}</p>
-          </div>
-          <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
-            <CallLink variant="forest" size="lg" />
-            <WhatsAppLink variant="whatsapp" size="lg" />
-          </div>
-        </div>
-      </Container>
-    </section>
-  );
-}
-
-/* ----------------------------- small link helper --------------------------- */
-
-export function ArrowLink({ href, children }: { href: string; children: ReactNode }) {
-  return (
-    <Link
-      href={href}
-      className="group inline-flex items-center gap-1.5 text-sm font-semibold text-forest-800 hover:text-gold-600"
-    >
-      {children}
-      <Icon name="arrow" className="size-4 transition-transform group-hover:translate-x-0.5" />
-    </Link>
-  );
-}

@@ -1,18 +1,6 @@
-# dependencies (installed automatically by "npm install")
-/node_modules
-
-# build output
-/.next/
-/out/
-/build
-
-# local environment files (never upload these)
 .env
-.env*.local
-
-# misc
-.DS_Store
-*.pem
-npm-debug.log*
-*.tsbuildinfo
-.vercel
+.next/
+node_modules/
+tsconfig.tsbuildinfo
+public-folder.zip
+github-upload/

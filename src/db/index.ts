@@ -1,31 +1,24 @@
-import { drizzle, type NodePgDatabase } from "drizzle-orm/node-postgres";
+import { drizzle } from "drizzle-orm/node-postgres";
 import { Pool } from "pg";
 
-/**
- * Optional database connection.
- * The website itself does not need a database. The connection is created lazily,
- * only when DATABASE_URL is set and `getDb()` is called, so the site builds and runs
- * on any host (Vercel, Netlify, etc.) without one.
- */
+const databaseUrl = process.env.DATABASE_URL;
+
+if (!databaseUrl) {
+  throw new Error("DATABASE_URL is required");
+}
+
 const globalForDb = globalThis as typeof globalThis & {
-  __gdPool?: Pool;
-  __gdDb?: NodePgDatabase;
+  __arenaNextJsPostgresqlPool?: Pool;
 };
 
-export function hasDatabase(): boolean {
-  return Boolean(process.env.DATABASE_URL);
+export const pool =
+  globalForDb.__arenaNextJsPostgresqlPool ??
+  new Pool({
+    connectionString: databaseUrl,
+  });
+
+if (process.env.NODE_ENV !== "production") {
+  globalForDb.__arenaNextJsPostgresqlPool = pool;
 }
 
-export function getDb(): NodePgDatabase {
-  if (globalForDb.__gdDb) return globalForDb.__gdDb;
-
-  const databaseUrl = process.env.DATABASE_URL;
-  if (!databaseUrl) {
-    throw new Error("DATABASE_URL is not set");
-  }
-
-  const pool = globalForDb.__gdPool ?? new Pool({ connectionString: databaseUrl });
-  globalForDb.__gdPool = pool;
-  globalForDb.__gdDb = drizzle(pool);
-  return globalForDb.__gdDb;
-}
+export const db = drizzle(pool);

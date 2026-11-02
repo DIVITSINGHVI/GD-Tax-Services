@@ -1,5 +1,3 @@
-import { IMAGES } from "@/lib/images";
-
 // The site is currently English-only. To add another language later, extend this type
 // (e.g. "en" | "kn"), add the matching strings to each entry, and re-add a language toggle.
 export type Lang = "en";
@@ -16,8 +14,6 @@ export type IconName =
 export type Service = {
   slug: string;
   icon: IconName;
-  image: string;
-  imageAlt: string;
   title: L;
   short: L;
   description: L;
@@ -31,7 +27,7 @@ export type Service = {
 export const ui = {
   nav: {
     home: { en: "Home" },
-    services: { en: "Services" },
+    services: { en: "Our Services" },
     about: { en: "About Us" },
     contact: { en: "Contact" },
   },
@@ -43,10 +39,8 @@ export const ui = {
   whatsapp: { en: "WhatsApp" },
   whatsappUs: { en: "Chat on WhatsApp" },
   enquireWhatsApp: { en: "Enquire on WhatsApp" },
-  enquiryForm: { en: "Use enquiry form" },
   learnMore: { en: "View details" },
   allServices: { en: "View all services" },
-  ourServices: { en: "Our Services" },
   directions: { en: "Open in Google Maps" },
   phone: { en: "Phone" },
   address: { en: "Address" },
@@ -59,7 +53,7 @@ export const ui = {
   quickLinks: { en: "Quick links" },
   contactUs: { en: "Contact us" },
   servingAreas: {
-    en: "Serving Chikkanayakanahalli (C N Halli), J C Pura and Tumakuru District",
+    en: "Serving Chikkanayakanahalli Taluk and Tumakuru District",
   },
   rights: { en: "All rights reserved." },
 };
@@ -72,13 +66,6 @@ export const waMessages = {
   service: {
     en: "Hello GD TAX SERVICES, I would like to enquire about: ",
   },
-  form: {
-    en: "Hello GD TAX SERVICES, I would like to make an enquiry.",
-  },
-  labelName: { en: "Name" },
-  labelPhone: { en: "Phone" },
-  labelService: { en: "Service" },
-  labelMessage: { en: "Message" },
 };
 
 /* -------------------------------------------------------------------------- */
@@ -89,8 +76,6 @@ export const services: Service[] = [
   {
     slug: "tax-compliance",
     icon: "calculator",
-    image: IMAGES.tax,
-    imageAlt: "Income statement, calculator and tax notes on a desk",
     title: { en: "Tax & Compliance" },
     short: {
       en: "Income tax returns, GST and tax paperwork handled clearly and on time.",
@@ -99,8 +84,8 @@ export const services: Service[] = [
       en: "Stay on the right side of tax rules without the stress. We help individuals, salaried people and small businesses file returns, register for GST and keep their tax records in order.",
     },
     items: [
-      { en: "Income Tax Return (ITR) filing" },
       { en: "GST registration and return filing" },
+      { en: "Income Tax Return (ITR) filing" },
       { en: "PAN application and corrections" },
       { en: "TDS-related filings" },
       { en: "Help understanding tax notices" },
@@ -110,8 +95,6 @@ export const services: Service[] = [
   {
     slug: "business-registration",
     icon: "briefcase",
-    image: IMAGES.business,
-    imageAlt: "Shopkeeper in a small local market shop",
     title: { en: "Business & Registration" },
     short: {
       en: "Udyam, GST, licences and registrations to set up your business properly.",
@@ -132,8 +115,6 @@ export const services: Service[] = [
   {
     slug: "pf-employee-services",
     icon: "users",
-    image: IMAGES.pf,
-    imageAlt: "Professional working on a computer in an office",
     title: { en: "PF & Employee Services" },
     short: {
       en: "UAN, PF withdrawals, transfers and employer registrations made simpler.",
@@ -154,8 +135,6 @@ export const services: Service[] = [
   {
     slug: "passport-documentation",
     icon: "passport",
-    image: IMAGES.passport,
-    imageAlt: "Person filling in an application form on a clipboard",
     title: { en: "Passport & Documentation" },
     short: {
       en: "Passport applications, renewals and important ID document support.",
@@ -176,8 +155,6 @@ export const services: Service[] = [
   {
     slug: "insurance",
     icon: "shield",
-    image: IMAGES.insurance,
-    imageAlt: "Advisor explaining an insurance policy document to clients",
     title: { en: "Insurance" },
     short: {
       en: "Life, health, vehicle and business insurance guidance, renewals and claims help.",
@@ -204,19 +181,19 @@ export const hero = {
     en: "Chikkanayakanahalli · Tumakuru",
   },
   title: {
-    en: "Trusted tax, registration & documentation help — close to home",
+    en: "GST Registration & Income Tax Return Filing, Made Simple",
   },
   text: {
-    en: "GD TAX SERVICES helps individuals, families and small businesses with tax filing, business registration, PF, passport and insurance — in plain, simple language.",
+    en: "Trusted local help with GST registration, ITR filing and essential business, PF, passport and insurance services in Chikkanayakanahalli and Tumakuru.",
   },
   points: [
-    { en: "Local office in Tarabenahalli" },
-    { en: "Open 7 AM – 9 PM" },
+    { en: "Local service for Tumakuru District" },
+    { en: "Clear, step-by-step guidance" },
     { en: "Quick help on WhatsApp" },
   ] as L[],
   visitLabel: { en: "Visit our office" },
   visitPlace: {
-    en: "Tarabenahalli, Chikkanayakanahalli Taluk",
+    en: "Chikkanayakanahalli Taluk, Tumakuru",
   },
 };
 
@@ -226,7 +203,7 @@ export const intro = {
     en: "A dependable local partner for your paperwork",
   },
   text: {
-    en: "Government forms, online portals and filing deadlines can be confusing. GD TAX SERVICES, based in Tarabenahalli, Chikkanayakanahalli Taluk, helps you get them done correctly — explaining each step clearly so you always know where things stand.",
+    en: "Government forms, online portals and filing deadlines can be confusing. GD TAX SERVICES, based in Chikkanayakanahalli Taluk, Tumakuru, helps you get them done correctly — explaining each step clearly so you always know where things stand.",
   },
   values: [
     {
@@ -364,13 +341,7 @@ export const faqs = {
     {
       q: { en: "Which areas do you serve?" },
       a: {
-        en: "We are based in Tarabenahalli, Chikkanayakanahalli Taluk, Tumakuru, and serve Chikkanayakanahalli (C N Halli), J C Pura and the wider Tumakuru district.",
-      },
-    },
-    {
-      q: { en: "What are your working hours?" },
-      a: {
-        en: "We are open from 7 AM to 9 PM. You can also send us a WhatsApp message or email at any time, and we will reply during working hours.",
+        en: "We serve Chikkanayakanahalli Taluk and the surrounding areas across Tumakuru District.",
       },
     },
     {
@@ -384,9 +355,9 @@ export const faqs = {
 
 export const location = {
   eyebrow: { en: "Find us" },
-  title: { en: "Visit us in Tarabenahalli" },
+  title: { en: "Visit us in Tumakuru" },
   text: {
-    en: "Our office is in Tarabenahalli, Chikkanayakanahalli Taluk, Tumakuru. We are open from 7 AM to 9 PM — call ahead and we will be happy to guide you.",
+    en: "Our office serves Chikkanayakanahalli Taluk and Tumakuru District. Call ahead and we will be happy to guide you.",
   },
 };
 
@@ -404,7 +375,7 @@ export const cta = {
 export const servicesPage = {
   title: { en: "Our Services" },
   text: {
-    en: "Tax, registration, PF, passport and insurance support from your local office in Tarabenahalli, serving Chikkanayakanahalli, J C Pura and Tumakuru.",
+    en: "Tax, registration, PF, passport and insurance support from your local office serving Chikkanayakanahalli Taluk and Tumakuru.",
   },
   helpWith: { en: "Examples of how we can help" },
   note: {
@@ -419,11 +390,11 @@ export const servicesPage = {
 export const aboutPage = {
   title: { en: "About GD TAX SERVICES" },
   text: {
-    en: "A local tax, registration and documentation service for Chikkanayakanahalli (C N Halli), J C Pura and Tumakuru District.",
+    en: "A local tax, registration and documentation service for Chikkanayakanahalli Taluk and Tumakuru District.",
   },
   heading: { en: "Paperwork made clear, close to home" },
   p1: {
-    en: "GD TAX SERVICES is a local tax, registration and documentation service based in Tarabenahalli, Chikkanayakanahalli Taluk, Tumakuru District. We help individuals, families and small businesses complete important paperwork without confusion or unnecessary trips.",
+    en: "GD TAX SERVICES is a local tax, registration and documentation service based in Chikkanayakanahalli Taluk, Tumakuru, Karnataka 572214. We help individuals, families and small businesses complete important paperwork without confusion or unnecessary trips.",
   },
   p2: {
     en: "From filing returns and registering a business to PF, passport and insurance work, our aim is simple: explain things clearly, tell you exactly what is needed, and help you get it done properly.",
@@ -456,7 +427,6 @@ export const aboutPage = {
     { en: "Employees and employers" },
     { en: "Anyone needing passport or ID document help" },
   ] as L[],
-  imageAlt: "Coconut palms and green farmland in the countryside",
 };
 
 /* -------------------------------------------------------------------------- */
@@ -466,44 +436,11 @@ export const aboutPage = {
 export const contactPage = {
   title: { en: "Contact Us" },
   text: {
-    en: "Call, message on WhatsApp, visit our office or send an enquiry. We will be happy to help.",
+    en: "Call, message us on WhatsApp or visit our office. We will be happy to help.",
   },
   detailsTitle: { en: "Get in touch" },
   tapToCall: { en: "Tap to call" },
   tapToChat: { en: "Tap to chat — replies on WhatsApp" },
-};
-
-export const form = {
-  title: { en: "Send an enquiry" },
-  text: {
-    en: "Fill in the form and your enquiry opens in WhatsApp, ready to send to us.",
-  },
-  name: { en: "Your name" },
-  namePh: { en: "Enter your full name" },
-  phone: { en: "Mobile number" },
-  phonePh: { en: "10-digit mobile number" },
-  service: { en: "Service needed" },
-  servicePh: { en: "Select a service" },
-  other: { en: "Other / not sure" },
-  message: { en: "Message (optional)" },
-  messagePh: {
-    en: "Tell us briefly what you need help with",
-  },
-  submit: { en: "Send enquiry" },
-  errName: { en: "Please enter your name (at least 2 letters)." },
-  errPhone: {
-    en: "Please enter a valid 10-digit mobile number.",
-  },
-  errService: { en: "Please choose a service." },
-  errMessage: {
-    en: "Message is too long (maximum 500 characters).",
-  },
-  successTitle: { en: "Thank you! Your enquiry is ready." },
-  successText: {
-    en: "We have opened WhatsApp with your details filled in. Please press Send there to reach us. If it did not open, use the button below.",
-  },
-  openWhatsApp: { en: "Open WhatsApp" },
-  another: { en: "Send another enquiry" },
 };
 
 /* -------------------------------------------------------------------------- */
@@ -512,23 +449,23 @@ export const form = {
 
 export const seo = {
   home: {
-    title: "GD TAX SERVICES – Tax, GST, PF, Passport & Insurance in Chikkanayakanahalli (C N Halli), Tumakuru",
+    title: "GD TAX SERVICES – Tax, GST, PF, Passport & Insurance in Chikkanayakanahalli, Tumakuru",
     description:
-      "GD TAX SERVICES in Tarabenahalli, Chikkanayakanahalli (C N Halli) Taluk, Tumakuru: income tax & GST filing, business registration, PF & UAN services, passport help and insurance. Open 7 AM – 9 PM. Call 7975171155.",
+      "GD TAX SERVICES in Chikkanayakanahalli Taluk, Tumakuru: income tax & GST filing, business registration, PF & UAN services, passport help and insurance. Call 7975171155.",
   },
   services: {
     title: "Services – Tax, Business Registration, PF, Passport & Insurance",
     description:
-      "Tax & compliance, business & registration, PF & employee services, passport & documentation and insurance help in Chikkanayakanahalli (C N Halli), J C Pura and Tumakuru District.",
+      "Tax & compliance, business registration, PF, passport, documentation and insurance help in Chikkanayakanahalli Taluk and Tumakuru District.",
   },
   about: {
-    title: "About Us – Local Tax & Documentation Help in Chikkanayakanahalli",
+    title: "About GD TAX SERVICES – Tax & Documentation Help in Chikkanayakanahalli",
     description:
-      "Learn about GD TAX SERVICES, a local tax, registration and documentation service in Tarabenahalli, Chikkanayakanahalli Taluk, Tumakuru District.",
+      "Learn about GD TAX SERVICES, a local tax, registration and documentation service in Chikkanayakanahalli Taluk, Tumakuru.",
   },
   contact: {
-    title: "Contact Us – Tarabenahalli, Chikkanayakanahalli, Tumakuru",
+    title: "Contact GD TAX SERVICES – Chikkanayakanahalli, Tumakuru",
     description:
-      "Call 7975171155, WhatsApp or email gdtax1379@gmail.com. Visit GD TAX SERVICES at Tarabenahalli, Chikkanayakanahalli Taluk, Tumakuru, Karnataka 572214. Open 7 AM – 9 PM.",
+      "Call 7975171155 or WhatsApp GD TAX SERVICES. Visit us in Chikkanayakanahalli Taluk, Tumakuru, Karnataka 572214.",
   },
 };

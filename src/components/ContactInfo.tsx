@@ -31,7 +31,7 @@ function Row({
   );
 }
 
-/** Phone, WhatsApp, address, email and hours (email & hours are placeholders until provided). */
+/** Central phone, WhatsApp, address, email and working-hours display. */
 export default function ContactInfo() {
   const { t, lang } = useLang();
   return (

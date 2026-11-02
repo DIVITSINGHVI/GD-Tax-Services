@@ -10,7 +10,8 @@ import { useLang } from "@/lib/i18n";
 import { SITE } from "@/lib/site";
 import { ui } from "@/lib/content";
 
-const links = [
+// Three public pages. Services live as a dedicated section on the Home page.
+const pageLinks = [
   { href: "/", label: ui.nav.home },
   { href: "/about", label: ui.nav.about },
   { href: "/contact", label: ui.nav.contact },
@@ -25,18 +26,16 @@ export default function Header() {
 
   return (
     <>
-      {/* Slim contact bar (desktop) */}
       <div className="hidden bg-forest-950 text-[0.8rem] text-white/80 md:block">
         <Container className="flex items-center justify-between py-2">
           <span className="inline-flex items-center gap-2">
             <Icon name="pin" className="size-3.5 text-gold-300" />
             {SITE.address[lang]}
           </span>
-          <span className="flex items-center gap-6">
-            <span className="hidden items-center gap-2 lg:inline-flex">
-              <Icon name="clock" className="size-3.5 text-gold-300" />
-              {t(ui.hours)}: {SITE.hours}
-            </span>
+          <span className="flex items-center gap-5">
+            <a href={`mailto:${SITE.email}`} className="hover:text-gold-300">
+              {SITE.email}
+            </a>
             <a href={SITE.phoneHref} className="inline-flex items-center gap-2 font-semibold text-white hover:text-gold-300">
               <Icon name="phone" className="size-3.5 text-gold-300" />
               {SITE.phoneDisplay}
@@ -52,24 +51,30 @@ export default function Header() {
           </Link>
 
           <nav className="hidden items-center gap-1 lg:flex" aria-label="Main">
-            {links.map((l) => (
+            {pageLinks.map((link) => (
               <Link
-                key={l.href}
-                href={l.href}
-                aria-current={isActive(l.href) ? "page" : undefined}
+                key={link.href}
+                href={link.href}
+                aria-current={isActive(link.href) ? "page" : undefined}
                 className={`rounded-full px-4 py-2 text-[0.95rem] font-medium transition-colors ${
-                  isActive(l.href)
+                  isActive(link.href)
                     ? "bg-forest-100 text-forest-900"
                     : "text-forest-900/80 hover:bg-forest-50 hover:text-forest-900"
                 }`}
               >
-                {t(l.label)}
+                {t(link.label)}
               </Link>
             ))}
           </nav>
 
           <div className="flex items-center gap-2">
-            <div className="hidden lg:block">
+            <Link
+              href="/#services"
+              className="hidden min-h-11 items-center rounded-full bg-gold-400 px-5 text-sm font-semibold text-forest-950 hover:bg-gold-300 lg:inline-flex"
+            >
+              {t(ui.nav.services)}
+            </Link>
+            <div className="hidden xl:block">
               <CallLink size="sm" variant="forest" label={{ en: SITE.phoneDisplay }} />
             </div>
             <button
@@ -78,29 +83,36 @@ export default function Header() {
               aria-expanded={open}
               aria-controls="mobile-menu"
               aria-label={open ? t(ui.closeMenu) : t(ui.menu)}
-              onClick={() => setOpen((v) => !v)}
+              onClick={() => setOpen((value) => !value)}
             >
               <Icon name={open ? "close" : "menu"} className="size-5" />
             </button>
           </div>
         </Container>
 
-        {/* Mobile / tablet menu */}
         {open ? (
           <div id="mobile-menu" className="border-t border-forest-900/10 bg-cream lg:hidden">
             <Container className="py-4">
+              <Link
+                href="/#services"
+                onClick={() => setOpen(false)}
+                className="mb-2 flex min-h-12 items-center justify-between rounded-xl bg-gold-100 px-4 font-semibold text-forest-900"
+              >
+                {t(ui.nav.services)}
+                <Icon name="arrow" className="size-4" />
+              </Link>
               <nav className="flex flex-col" aria-label="Mobile">
-                {links.map((l) => (
+                {pageLinks.map((link) => (
                   <Link
-                    key={l.href}
-                    href={l.href}
+                    key={link.href}
+                    href={link.href}
                     onClick={() => setOpen(false)}
-                    aria-current={isActive(l.href) ? "page" : undefined}
-                    className={`flex items-center justify-between border-b border-forest-900/10 py-3.5 text-lg font-medium ${
-                      isActive(l.href) ? "text-gold-600" : "text-forest-900"
+                    aria-current={isActive(link.href) ? "page" : undefined}
+                    className={`flex min-h-12 items-center justify-between border-b border-forest-900/10 py-3 text-lg font-medium ${
+                      isActive(link.href) ? "text-gold-600" : "text-forest-900"
                     }`}
                   >
-                    {t(l.label)}
+                    {t(link.label)}
                     <Icon name="arrow" className="size-4 opacity-60" />
                   </Link>
                 ))}

@@ -7,7 +7,6 @@ import Footer from "@/components/Footer";
 import FloatingActions from "@/components/FloatingActions";
 import { SITE } from "@/lib/site";
 import { seo, services } from "@/lib/content";
-import { IMAGES } from "@/lib/images";
 
 const dmSans = DM_Sans({ subsets: ["latin"], variable: "--font-dm-sans", display: "swap" });
 const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfair", display: "swap" });
@@ -23,14 +22,12 @@ export const metadata: Metadata = {
   keywords: [
     "GD TAX SERVICES",
     "tax services Chikkanayakanahalli",
-    "tax consultant Chikkanayakanahalli",
     "tax services C N Halli",
-    "tax consultant J C Pura",
     "tax filing Tumakuru",
     "GST registration Tumakuru",
-    "ITR filing C N Halli",
+    "ITR filing Chikkanayakanahalli",
     "PF services Tumakuru",
-    "passport application J C Pura",
+    "passport application Tumakuru",
     "insurance Tumakuru",
     "Udyam registration Tumakuru",
   ],
@@ -41,9 +38,8 @@ export const metadata: Metadata = {
     locale: "en_IN",
     title: seo.home.title,
     description: seo.home.description,
-    images: [{ url: IMAGES.hero, alt: "GD TAX SERVICES" }],
   },
-  twitter: { card: "summary_large_image", title: seo.home.title, description: seo.home.description },
+  twitter: { card: "summary", title: seo.home.title, description: seo.home.description },
   formatDetection: { telephone: true },
 };
 
@@ -59,21 +55,18 @@ const jsonLd = {
   "@type": "ProfessionalService",
   name: SITE.name,
   url: SITE.url,
-  image: IMAGES.hero,
   telephone: "+917975171155",
   email: SITE.email,
   description: seo.home.description,
   address: {
     "@type": "PostalAddress",
-    streetAddress: "Tarabenahalli",
-    addressLocality: "Chikkanayakanahalli",
+    addressLocality: "Tumakuru",
     addressRegion: "Karnataka",
     postalCode: "572214",
     addressCountry: "IN",
   },
   areaServed: [
-    { "@type": "City", name: "Chikkanayakanahalli", alternateName: "C N Halli" },
-    { "@type": "City", name: "J C Pura" },
+    { "@type": "City", name: "Chikkanayakanahalli" },
     { "@type": "AdministrativeArea", name: "Tumakuru District" },
   ],
   availableLanguage: "English",
